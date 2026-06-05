@@ -31,6 +31,7 @@ export default function RootLayout({
       lang="ar"
       dir="rtl"
       className={cairo.variable}
+      suppressHydrationWarning
     >
       <body className="font-[family-name:var(--font-cairo)] bg-[#FDF6E3] text-[#2C1A1A] overflow-x-hidden">
         {children}
