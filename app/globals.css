@@ -1,26 +1,128 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
+/* ── Design Tokens ─────────────────────────────────────────── */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Palette */
+  --color-ivory:       #FFFFF0;
+  --color-cream:       #FDF6E3;
+  --color-beige:       #F5EDD8;
+  --color-champagne:   #F7E7C1;
+  --color-gold:        #C9A84C;
+  --color-gold-light:  #E8C96A;
+  --color-gold-dark:   #9A7B35;
+  --color-wine:        #2C1A1A;
+  --color-wine-light:  #4A2828;
+  --color-ink:         #1A0F0F;
+
+  /* Fonts */
+  --font-cairo: 'Cairo', 'Amiri', sans-serif;
+
+  /* Shadows */
+  --shadow-gold: 0 4px 32px rgba(201,168,76,0.25);
+  --shadow-glow: 0 0 60px rgba(201,168,76,0.15);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ── Base ───────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #FDF6E3;
+  color: #2C1A1A;
+  font-family: 'Cairo', 'Amiri', sans-serif;
+  direction: rtl;
+  text-align: right;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Custom Scrollbar ───────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #FDF6E3;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #C9A84C, #9A7B35);
+  border-radius: 3px;
+}
+
+/* ── Keyframes ──────────────────────────────────────────────── */
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33%       { transform: translateY(-18px) rotate(3deg); }
+  66%       { transform: translateY(-8px) rotate(-3deg); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes pulse-gold {
+  0%, 100% { box-shadow: 0 0 20px rgba(201,168,76,0.3); }
+  50%       { box-shadow: 0 0 40px rgba(201,168,76,0.6); }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Utility classes ────────────────────────────────────────── */
+.text-gradient-gold {
+  background: linear-gradient(135deg, #E8C96A 0%, #C9A84C 40%, #9A7B35 80%, #C9A84C 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 4s linear infinite;
+}
+
+.gold-border {
+  border: 1px solid rgba(201,168,76,0.4);
+}
+
+.glass-gold {
+  background: rgba(253,246,227,0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(201,168,76,0.3);
+}
+
+.arabesque-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23C9A84C' stroke-width='0.5' opacity='0.15'%3E%3Ccircle cx='40' cy='40' r='35'/%3E%3Ccircle cx='40' cy='40' r='25'/%3E%3Ccircle cx='40' cy='40' r='15'/%3E%3Cpath d='M40 5 L40 75 M5 40 L75 40 M12 12 L68 68 M68 12 L12 68'/%3E%3Cpath d='M40 5 Q55 20 40 35 Q25 50 40 65 M40 5 Q25 20 40 35 Q55 50 40 65'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* ── Section base ───────────────────────────────────────────── */
+.section-padding {
+  padding: 5rem 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding: 7rem 3rem;
+  }
+}
+
+/* ── Reduced motion ─────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
