@@ -10,14 +10,13 @@ const cairo = Cairo({
 });
 
 export const metadata: Metadata = {
-  title: "دعوة زفاف ليلى وأحمد | Wedding Invitation",
+  title: "Layla & Ahmed — Wedding Invitation 💍",
   description:
-    "نتشرف بدعوتكم لحضور حفل زفاف ليلى وأحمد — بإذن الله وتوفيقه في قصر الأميرة، الرياض",
-  keywords: ["زواج", "دعوة زفاف", "حفل زفاف", "ليلى وأحمد"],
+    "Join us to celebrate the wedding of Layla & Ahmed — Saturday, March 15, 2026 at Al-Amira Palace, Riyadh.",
+  keywords: ["wedding", "invitation", "Layla", "Ahmed", "زفاف", "دعوة"],
   openGraph: {
-    title: "دعوة زفاف ليلى وأحمد",
-    description:
-      "يسرّنا دعوتكم لمشاركتنا فرحة هذه المناسبة السعيدة",
+    title: "Layla & Ahmed — Wedding Invitation",
+    description: "Saturday, March 15, 2026 · Al-Amira Palace, Riyadh",
     type: "website",
   },
 };
